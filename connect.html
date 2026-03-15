@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Connect — Aditya Uniyal</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Connect with Aditya Uniyal — available for collaborations, freelance work, and technical discussions.">
+    <meta property="og:title" content="Connect — Aditya Uniyal" />
+    <meta property="og:description" content="Available for collaborations, freelance work, and technical discussions." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://adityauniyal.is-a.dev/connect.html" />
+    <link rel="canonical" href="https://adityauniyal.is-a.dev/connect.html">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand">
+                <strong>Aditya</strong> <strong>Uniyal</strong> - Dev
+            </a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="connect.html" class="cta">Connect</a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i data-lucide="moon"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Open site menu"
+                aria-controls="mobileNav" aria-expanded="false">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </button>
+            <nav id="mobileNav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+                <div class="mobile-nav-backdrop" data-close="true"></div>
+                <div class="mobile-nav-panel" role="document">
+                    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+                    <div class="mobile-brand"><strong>Aditya Uniyal</strong> - Dev</div>
+                    <ul class="mobile-nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="skills.html">Skills</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="connect.html" class="mobile-cta">Connect</a></li>
+                    </ul>
+                    <div class="mobile-footer">
+                        <a href="/assets/Aditya_Uniyal_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1>Connect With Me</h1>
+        <p class="muted">Interested in collaboration, development work, or technical discussion?</p>
+
+        <div class="connect-grid">
+            <div class="card glass">
+                <h3>Direct Communication</h3>
+                <p>For project discussions, collaborations, or opportunities, please use the secure contact form below.</p>
+                <p>Status: <span class="status-badge available">Available for Collaboration</span></p>
+                <a href="feedback.html" class="btn">Send Message</a>
+            </div>
+
+            <div class="card glass">
+                <h3>Developer Profiles</h3>
+                <ul class="handles">
+                    <li>GitHub → <a href="https://github.com/uniyal-aditya" target="_blank" rel="noopener">uniyal-aditya</a></li>
+                    <li>Fiverr → <a href="https://www.fiverr.com/uniyal_aditya" target="_blank" rel="noopener">uniyal_aditya</a></li>
+                    <li>LinkedIn → <a href="https://linkedin.com/in/uniyaladitya" target="_blank" rel="noopener">uniyaladitya</a></li>
+                    <li>X / Twitter → <a href="https://x.com/uaditya_dev" target="_blank" rel="noopener">@uaditya_dev</a></li>
+                    <li>YouTube → <a href="https://youtube.com/@Raftar-exe" target="_blank" rel="noopener">@Raftar-exe</a></li>
+                    <li>Discord → <a href="https://discord.com/users/800553680704110624" target="_blank" rel="noopener">uniyal_aditya</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>© <span id="year"></span> Aditya Uniyal</div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="connect.html">Connect</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

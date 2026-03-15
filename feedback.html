@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Feedback — Aditya Uniyal</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Send feedback to Aditya Uniyal — share your experience with projects or the site.">
+    <meta property="og:title" content="Feedback — Aditya Uniyal" />
+    <meta property="og:description" content="Share your experience or get in touch with Aditya Uniyal." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://adityauniyal.is-a.dev/feedback.html" />
+    <link rel="canonical" href="https://adityauniyal.is-a.dev/feedback.html">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Star rating widget */
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 4px;
+            margin-top: 6px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 28px;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: color 0.15s ease;
+            line-height: 1;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #f59e0b;
+        }
+
+        :root[data-theme="dark"] .star-rating label {
+            color: #374151;
+        }
+
+        :root[data-theme="dark"] .star-rating label:hover,
+        :root[data-theme="dark"] .star-rating label:hover ~ label,
+        :root[data-theme="dark"] .star-rating input:checked ~ label {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand">
+                <strong>Aditya</strong> <strong>Uniyal</strong> - Dev
+            </a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="connect.html" class="cta">Connect</a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i data-lucide="moon"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Open site menu"
+                aria-controls="mobileNav" aria-expanded="false">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </button>
+            <nav id="mobileNav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+                <div class="mobile-nav-backdrop" data-close="true"></div>
+                <div class="mobile-nav-panel" role="document">
+                    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+                    <div class="mobile-brand"><strong>Aditya Uniyal</strong> - Dev</div>
+                    <ul class="mobile-nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="skills.html">Skills</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="connect.html" class="mobile-cta">Connect</a></li>
+                    </ul>
+                    <div class="mobile-footer">
+                        <a href="/assets/Aditya_Uniyal_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1>Feedback</h1>
+        <p class="muted">Your feedback helps me improve my projects and site. Optionally provide your email if you want a reply.</p>
+
+        <form id="feedback-form" class="form">
+            <label>
+                Name
+                <input type="text" name="name" id="name" placeholder="Your name">
+            </label>
+
+            <label>
+                Email
+                <input type="email" name="email" id="email" placeholder="you@example.com">
+            </label>
+
+            <label>
+                Rating
+                <div class="star-rating" role="group" aria-label="Rating out of 5">
+                    <input type="radio" id="star5" name="rating" id="rating" value="5" required>
+                    <label for="star5" title="5 stars">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" title="4 stars">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" title="3 stars">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" title="2 stars">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" title="1 star">★</label>
+                </div>
+            </label>
+
+            <label>
+                Message
+                <textarea name="message" id="message" rows="6" required placeholder="Write your feedback..."></textarea>
+            </label>
+
+            <label>
+                Related Project (optional)
+                <select name="project" id="project">
+                    <option value="">— none —</option>
+                    <option value="numexa">Numexa</option>
+                    <option value="music-bot-zero">Music Bot Zero</option>
+                    <option value="delight-restaurant">Delight Restaurant</option>
+                    <option value="raftarfun">RaftarFun</option>
+                    <option value="aichat">AI Chatbot</option>
+                </select>
+            </label>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Send Feedback</button>
+                <div id="form-msg" role="status" aria-live="polite"></div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>© <span id="year"></span> Aditya Uniyal</div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="connect.html">Connect</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function () { emailjs.init("xPYwrcIVmeLYO2V6a"); })();
+
+        document.getElementById("feedback-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const btn = this.querySelector("button[type='submit']");
+            const msg = document.getElementById("form-msg");
+
+            // get selected star rating
+            const ratingInput = this.querySelector('input[name="rating"]:checked');
+            if (!ratingInput) {
+                msg.textContent = "Please select a rating.";
+                msg.style.color = "red";
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = "Sending...";
+
+            emailjs.sendForm("aditya_uniyal_portfolio", "portfolio_template", this)
+                .then(() => {
+                    msg.textContent = "Feedback sent successfully!";
+                    msg.style.color = "green";
+                    this.reset();
+                }, (error) => {
+                    msg.textContent = "Failed to send. Try again.";
+                    msg.style.color = "red";
+                    console.error(error);
+                })
+                .finally(() => {
+                    btn.disabled = false;
+                    btn.textContent = "Send Feedback";
+                });
+        });
+    </script>
+</body>
+
+</html>

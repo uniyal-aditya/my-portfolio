@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Aditya Uniyal — Developer</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aditya Uniyal — developer building scalable systems, Discord bots and interactive web platforms. Explore projects and collaborations.">
+    <meta property="og:title" content="Aditya Uniyal — Developer" />
+    <meta property="og:description" content="Developer portfolio featuring production-ready bots, web apps and experimental platforms." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://adityauniyal.is-a.dev/" />
+    <link rel="canonical" href="https://adityauniyal.is-a.dev/">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="bg-decoration">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="brand">
+                <strong>Aditya</strong> <strong>Uniyal</strong> - Dev
+            </a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="connect.html" class="cta">Connect</a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i data-lucide="moon"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Open site menu"
+                aria-controls="mobileNav" aria-expanded="false">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </button>
+            <nav id="mobileNav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+                <div class="mobile-nav-backdrop" data-close="true"></div>
+                <div class="mobile-nav-panel" role="document">
+                    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+                    <div class="mobile-brand"><strong>Aditya Uniyal</strong> - Dev</div>
+                    <ul class="mobile-nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="skills.html">Skills</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="connect.html" class="mobile-cta">Connect</a></li>
+                    </ul>
+                    <div class="mobile-footer">
+                        <a href="/assets/Aditya_Uniyal_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero container">
+            <div class="hero-left">
+                <h1>Hi — I'm <span class="accent">Aditya Uniyal</span></h1>
+                <p class="lead">
+                    I design and build scalable digital systems — from production-ready Discord bots
+                    to real-time web platforms and experimental interactive applications.
+                </p>
+                <div class="hero-ctas">
+                    <a href="projects.html" class="btn primary">View Projects</a>
+                    <a href="connect.html" class="btn btn-outline">Connect With Me</a>
+                    <a href="#" id="hireBtn" class="btn">Hire Me</a>
+                    <a href="/assets/Aditya_Uniyal_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+                </div>
+                <ul class="meta-list">
+                    <li>Location: India</li>
+                    <li>Available for: Collaborations, Freelance &amp; Mentoring</li>
+                </ul>
+            </div>
+
+            <aside class="support-card" aria-labelledby="support-title">
+                <h3 id="support-title">Support me</h3>
+                <p>Enjoying my work? A small coffee helps keep the projects alive.</p>
+                <div class="support-actions">
+                    <button id="upiRedirectBtn" class="bmc-btn" onclick="payUPI()">Buy Me a Coffee ☕</button>
+                    <button id="upiQRBtn" class="bmc-btn" onclick="openUPIModal()">Buy Me a Coffee ☕</button>
+                </div>
+            </aside>
+        </section>
+
+        <!-- UPI QR MODAL -->
+        <div id="upiModal" class="upi-modal">
+            <div class="upi-modal-content">
+                <h3>Scan to Pay via UPI</h3>
+                <img src="/assets/upi-qr.png" class="upi-qr" alt="UPI QR Code">
+                <p>Scan using any UPI app</p>
+                <button onclick="closeUPIModal()">Close</button>
+            </div>
+        </div>
+
+        <!-- EXPLORE PROJECTS -->
+        <section class="container peek">
+            <h2>Explore Projects</h2>
+            <div class="cards-grid">
+                <article class="card project-card">
+                    <h3>Numexa</h3>
+                    <p>Scientific Discord calculator bot with advanced math parsing, expression evaluation and optimized command architecture.</p>
+                    <div class="card-actions">
+                        <a href="projects.html#numexa">Read more</a>
+                    </div>
+                </article>
+                <article class="card project-card">
+                    <h3>Music Bot Zero</h3>
+                    <p>High-performance Discord music bot with queue management, streaming support and optimized playback architecture.</p>
+                    <div class="card-actions">
+                        <a href="projects.html#zero">Read more</a>
+                    </div>
+                </article>
+                <article class="card project-card">
+                    <h3>Delight Restaurant</h3>
+                    <p>Interactive restaurant website with menu display, reservation system and responsive design.</p>
+                    <div class="card-actions">
+                        <a href="projects.html#delight">Read more</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- QUICK CONTACT -->
+        <section class="container mini-contact">
+            <div class="glass">
+                <h3>Have an idea or collaboration in mind?</h3>
+                <p>I respond within 24–48 hours for serious inquiries.</p>
+                <a class="btn" href="connect.html">Contact Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>© <span id="year"></span> Aditya Uniyal</div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="connect.html">Connect</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- HIRE MODAL -->
+    <div id="hireModal" class="hire-modal" aria-hidden="true" role="dialog" aria-labelledby="hireModalTitle" tabindex="-1">
+        <div class="hire-modal-backdrop" data-close="true"></div>
+        <div class="hire-modal-panel" role="document">
+            <header class="hire-head">
+                <h2 id="hireModalTitle">Hire Me — Quick Links</h2>
+                <p class="muted">Open a profile or gig — I'll respond within 24–48 hours.</p>
+            </header>
+            <div class="hire-grid">
+                <a class="hire-card" href="https://www.fiverr.com/uniyal_aditya" target="_blank" rel="noopener noreferrer">
+                    <div class="hire-card-icon"><i data-lucide="target"></i></div>
+                    <div class="hire-card-body"><strong>Fiverr profile</strong><small>See my gigs &amp; reviews</small></div>
+                </a>
+                <a class="hire-card" href="https://www.fiverr.com/s/zWE9XVg" target="_blank" rel="noopener noreferrer">
+                    <div class="hire-card-icon"><i data-lucide="zap"></i></div>
+                    <div class="hire-card-body"><strong>Featured gig</strong><small>Website Development and Design</small></div>
+                </a>
+                <a class="hire-card" href="https://www.linkedin.com/in/uniyaladitya" target="_blank" rel="noopener noreferrer">
+                    <div class="hire-card-icon"><i data-lucide="linkedin"></i></div>
+                    <div class="hire-card-body"><strong>LinkedIn</strong><small>Resume, endorsements &amp; contact</small></div>
+                </a>
+                <a class="hire-card" href="https://adityauniyal.is-a.dev/connect.html" target="_blank" rel="noopener noreferrer">
+                    <div class="hire-card-icon"><i data-lucide="briefcase"></i></div>
+                    <div class="hire-card-body"><strong>Service / Contact</strong><small>Project details &amp; custom offers</small></div>
+                </a>
+            </div>
+            <footer class="hire-foot">
+                <small class="muted">Prefer a direct chat? DM me on Discord or Instagram or use the contact form.</small>
+            </footer>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

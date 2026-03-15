@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Projects — Aditya Uniyal</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Projects by Aditya Uniyal — Discord bots, web apps and interactive systems.">
+    <meta property="og:title" content="Projects — Aditya Uniyal" />
+    <meta property="og:description" content="Discord bots, web apps and interactive systems built by Aditya Uniyal." />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ── Projects page – original card design ── */
+
+        .projects-hero {
+            padding: 52px 0 32px;
+        }
+
+        .projects-hero h1 {
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            margin-bottom: 8px;
+        }
+
+        .projects-hero .sub {
+            color: var(--muted);
+            font-size: 15px;
+            max-width: 48ch;
+        }
+
+        /* ── Grid ── */
+        .proj-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            padding-bottom: 64px;
+        }
+
+        /* ── Card shell ── */
+        .proj-card {
+            position: relative;
+            border-radius: 16px;
+            background: var(--surface);
+            border: 1px solid rgba(15, 23, 42, 0.07);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.28s cubic-bezier(.2, .9, .28, 1),
+                box-shadow 0.28s ease;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+        }
+
+        .proj-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(15, 23, 42, 0.13);
+        }
+
+        /* ── Accent bar at top – each project gets a unique color ── */
+        .proj-card::before {
+            content: "";
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--proj-accent, var(--accent));
+            opacity: 0.85;
+        }
+
+        /* Individual accent colors */
+        .proj-card[data-project="numexa"] {
+            --proj-accent: linear-gradient(90deg, #0ea5e9, #38bdf8);
+        }
+
+        .proj-card[data-project="music"] {
+            --proj-accent: linear-gradient(90deg, #8b5cf6, #a78bfa);
+        }
+
+        .proj-card[data-project="delight"] {
+            --proj-accent: linear-gradient(90deg, #10b981, #34d399);
+        }
+
+        /* ── Card body ── */
+        .proj-body {
+            padding: 22px 22px 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Header row: icon + title + status ── */
+        .proj-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .proj-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: var(--proj-icon-bg, rgba(14, 165, 233, 0.1));
+        }
+
+        .proj-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--proj-icon-color, #0ea5e9);
+        }
+
+        .proj-card[data-project="numexa"] .proj-icon {
+            --proj-icon-bg: rgba(14, 165, 233, 0.1);
+            --proj-icon-color: #0ea5e9;
+        }
+
+        .proj-card[data-project="music"] .proj-icon {
+            --proj-icon-bg: rgba(139, 92, 246, 0.1);
+            --proj-icon-color: #8b5cf6;
+        }
+
+        .proj-card[data-project="delight"] .proj-icon {
+            --proj-icon-bg: rgba(16, 185, 129, 0.1);
+            --proj-icon-color: #10b981;
+        }
+
+        .proj-title-block {
+            flex: 1;
+        }
+
+        .proj-title-block h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 0 0 3px;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .proj-type {
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 0.03em;
+        }
+
+        .proj-status {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 4px 9px;
+            border-radius: 20px;
+            flex-shrink: 0;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* ── Description ── */
+        .proj-desc {
+            font-size: 13.5px;
+            line-height: 1.65;
+            color: var(--muted);
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        /* ── Stack chips ── */
+        .proj-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .chip {
+            font-size: 11.5px;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(15, 23, 42, 0.05);
+            color: var(--text);
+            border: 1px solid rgba(15, 23, 42, 0.07);
+            letter-spacing: 0.01em;
+        }
+
+        /* ── Footer: action links ── */
+        .proj-footer {
+            padding: 14px 22px 20px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
+            margin-top: auto;
+        }
+
+        .proj-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.18s ease, transform 0.18s ease;
+        }
+
+        .proj-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Light: black primary button */
+        .proj-link.primary {
+            background: #0f172a;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+        }
+
+        .proj-link.primary:hover {
+            background: #1e293b;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3);
+        }
+
+        /* Light: ghost outlined button */
+        .proj-link.ghost {
+            background: transparent;
+            color: #0f172a !important;
+            border: 1px solid rgba(15, 23, 42, 0.2);
+        }
+
+        .proj-link.ghost:hover {
+            background: #0f172a;
+            color: #ffffff !important;
+            border-color: #0f172a;
+        }
+
+        /* ── No-link state ── */
+        .proj-link.disabled {
+            opacity: 0.35;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        /* ── Ensure cards are always visible (override reveal) ── */
+        .proj-card {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .proj-card.reveal {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        /* ── Dark mode overrides ── */
+        :root[data-theme="dark"] .proj-card {
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        :root[data-theme="dark"] .proj-card:hover {
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+        }
+
+        :root[data-theme="dark"] .chip {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.09);
+            color: #c8cdd5;
+        }
+
+        :root[data-theme="dark"] .proj-footer {
+            border-top-color: rgba(255, 255, 255, 0.06);
+        }
+
+        /* Dark: white primary button */
+        :root[data-theme="dark"] .proj-link.primary {
+            background: #f0f0f0;
+            color: #000000 !important;
+            box-shadow: 0 4px 14px rgba(255, 255, 255, 0.08);
+        }
+
+        :root[data-theme="dark"] .proj-link.primary:hover {
+            background: #ffffff;
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Dark: ghost button */
+        :root[data-theme="dark"] .proj-link.ghost {
+            background: transparent;
+            color: #9aa3a0 !important;
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        :root[data-theme="dark"] .proj-link.ghost:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #f3f4f6 !important;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        :root[data-theme="dark"] .proj-card[data-project="numexa"] .proj-icon {
+            --proj-icon-bg: rgba(14, 165, 233, 0.12);
+        }
+
+        :root[data-theme="dark"] .proj-card[data-project="music"] .proj-icon {
+            --proj-icon-bg: rgba(139, 92, 246, 0.12);
+        }
+
+        :root[data-theme="dark"] .proj-card[data-project="delight"] .proj-icon {
+            --proj-icon-bg: rgba(16, 185, 129, 0.12);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand"><strong>Aditya</strong> <strong>Uniyal</strong> - Dev</div>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="skills.html">Skills</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="connect.html" class="cta">Connect</a>
+                <button id="nav-toggle" aria-label="Open menu">☰</button>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">
+                <i data-lucide="moon"></i>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Open site menu"
+                aria-controls="mobileNav" aria-expanded="false">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </button>
+            <nav id="mobileNav" class="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+                <div class="mobile-nav-backdrop" data-close="true"></div>
+                <div class="mobile-nav-panel" role="document">
+                    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+                    <div class="mobile-brand"><strong>Aditya Uniyal</strong> - Dev</div>
+                    <ul class="mobile-nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="skills.html">Skills</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="connect.html" class="mobile-cta">Connect</a></li>
+                    </ul>
+                    <div class="mobile-footer">
+                        <a href="/assets/Aditya_Uniyal_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="projects-hero">
+            <h1>Projects</h1>
+            <p class="sub">Systems I've designed and shipped — bots, web apps, and interactive platforms.</p>
+        </div>
+
+        <div class="proj-grid">
+
+            <!-- Numexa -->
+            <article class="proj-card card" data-project="numexa" id="numexa">
+                <div class="proj-body">
+                    <div class="proj-header">
+                        <div class="proj-icon">
+                            <i data-lucide="calculator"></i>
+                        </div>
+                        <div class="proj-title-block">
+                            <h3>Numexa</h3>
+                            <span class="proj-type">Discord Bot</span>
+                        </div>
+                        <span class="proj-status">SHIPPED</span>
+                    </div>
+                    <p class="proj-desc">
+                        Scientific calculator bot for Discord with advanced math parsing, expression evaluation,
+                        and a clean command architecture built for accuracy at scale.
+                    </p>
+                    <div class="proj-stack">
+                        <span class="chip">Python</span>
+                        <span class="chip">discord.py</span>
+                        <span class="chip">Math Parsing</span>
+                    </div>
+                </div>
+                <div class="proj-footer">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1460289617264775333&permissions=5629501681765440&scope=bot+applications.commands"
+                        target="_blank" rel="noopener" class="proj-link primary">
+                        <i data-lucide="globe"></i> Add
+                    </a>
+                    <a href="https://github.com/uniyal-aditya/Numexa" target="_blank" rel="noopener"
+                        class="proj-link ghost">
+                        <i data-lucide="github"></i> Source
+                    </a>
+                    <a href="https://numexa.vercel.app" target="_blank" rel="noopener" class="proj-link primary">
+                        <i data-lucide="globe"></i> Live
+                    </a>
+                </div>
+            </article>
+
+            <!-- Music Bot Zero -->
+            <article class="proj-card card" data-project="music" id="zero">
+                <div class="proj-body">
+                    <div class="proj-header">
+                        <div class="proj-icon">
+                            <i data-lucide="music"></i>
+                        </div>
+                        <div class="proj-title-block">
+                            <h3>Music Bot Zero</h3>
+                            <span class="proj-type">Discord Bot</span>
+                        </div>
+                        <span class="proj-status">Shipped</span>
+                    </div>
+                    <p class="proj-desc">
+                        High-performance music bot with queue management, streaming integration,
+                        and optimized real-time playback architecture for Discord servers.
+                    </p>
+                    <div class="proj-stack">
+                        <span class="chip">Python</span>
+                        <span class="chip">discord.py</span>
+                        <span class="chip">FFmpeg</span>
+                        <span class="chip">yt-dlp</span>
+                    </div>
+                </div>
+                <div class="proj-footer">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1462040223872581797&permissions=8845475720850496&response_type=code&redirect_uri=https%3A%2F%2Fdiscord.gg%2FUAd3waUyD3&integration_type=0&scope=voice+applications.commands+bot"
+                        target="_blank" rel="noopener" class="proj-link primary">
+                        <i data-lucide="globe"></i> Add
+                    </a>
+                    <a href="https://github.com/uniyal-aditya/zero" target="_blank" rel="noopener"
+                        class="proj-link ghost">
+                        <i data-lucide="github"></i> Source
+                    </a>
+                </div>
+            </article>
+
+            <!-- Delight Restaurant -->
+            <article class="proj-card card" data-project="delight" id="delight">
+                <div class="proj-body">
+                    <div class="proj-header">
+                        <div class="proj-icon">
+                            <i data-lucide="utensils"></i>
+                        </div>
+                        <div class="proj-title-block">
+                            <h3>Delight Restaurant</h3>
+                            <span class="proj-type">Web App</span>
+                        </div>
+                        <span class="proj-status">Shipped</span>
+                    </div>
+                    <p class="proj-desc">
+                        Interactive restaurant website with dynamic menu display, table reservation system,
+                        and a fully responsive layout built for real-world use.
+                    </p>
+                    <div class="proj-stack">
+                        <span class="chip">HTML</span>
+                        <span class="chip">CSS</span>
+                        <span class="chip">JavaScript</span>
+                    </div>
+                </div>
+                <div class="proj-footer">
+                    <a href="https://delight-restro.vercel.app" target="_blank" rel="noopener"
+                        class="proj-link primary">
+                        <i data-lucide="globe"></i> Live
+                    </a>
+
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>© <span id="year"></span> Aditya Uniyal</div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <a href="connect.html">Connect</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

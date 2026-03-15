@@ -1,0 +1,14 @@
+{
+    "name": "aditya-uniyal-portfolio",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Portfolio for Aditya Uniyal",
+    "main": "index.js",
+    "scripts": {
+        "build:functions": "echo 'Netlify functions build step'",
+        "start": "echo 'static site'"
+    },
+    "dependencies": {
+        "@sendgrid/mail": "^7.7.0"
+    }
+}
